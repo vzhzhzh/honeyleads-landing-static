@@ -15,17 +15,17 @@ interface ICards {
 const cards: ICards[] = [
   {
     img: '/images/goodCompanyItem_1.png',
-    title: 'Сюда текст',
+    title: 'Ритейл',
     description: 'Эффективные динамические посадочные страницы, A/В тесты, сбор данных по источникам'
   },
   {
     img: '/images/goodCompanyItem_2.png',
-    title: 'Сюда текст',
+    title: 'Контакт-центры',
     description: 'Сотни управляемых автоматически компаний, оптимизация, контроль бюджета'
   },
   {
     img: '/images/goodCompanyItem_1.png',
-    title: 'Сюда текст',
+    title: 'Производ-ственные',
     description: 'Воронка статусов, оценка эффективности, аналитика по каналам'
   }
 ]
@@ -42,7 +42,7 @@ const GoodCompany: FC<GoodCompanyProps> = () => {
                                                                     className="min-w-[30%] rounded-42 shadow-CARD px-20 py-50 bg-white md:min-w-[26.875rem] xs:min-w-[14rem] xs:py-15 xs:rounded-22">
                 <img className="max-h-[13rem]" src={img} alt=''/>
                 <div className='px-30 mt-60 xs:px-10 xs:mt-30'>
-                  <h4 className="text-35 leading-42 text-purple font-bold xs:text-18 xs:leading-22">{title}</h4>
+                  <h4 className="text-35 leading-42 text-purple font-bold xs:text-18 xs:leading-22  break-words">{title}</h4>
                   <div className="text-20 text-purple/40 leading-32 mt-20 xs:text-10 xs:leading-16">{description}</div>
                 </div>
               </div>)}
