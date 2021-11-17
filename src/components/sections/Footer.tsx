@@ -1,104 +1,81 @@
-import React, { memo, useRef, useState } from 'react'
-import { Button, TextInput } from '~ui'
-import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
+import React, { memo, useEffect } from 'react'
+import { useRendersCount, useUpdate } from 'react-use'
 import { Container } from '~ux'
-
-
-interface FooterProps {
+interface IFormInputs {
+  fullName: string
+  phone: number
+  email: string
 }
+
+interface FooterProps {}
 
 const FooterProps: React.FC<FooterProps> = props => {
   const {} = props
+  const update = useUpdate()
 
-  const [isDisable, setIsDisable] = useState<boolean>(false)
+  const rendersCount = useRendersCount()
 
-  interface IFormInputs {
-    fullName: string
-    phone: number
-    email: string
-  }
+  useEffect(() => {
+    if (rendersCount === 1) {
+      update()
+    }
+  }, [rendersCount])
 
-  const phoneRegExp = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+  useEffect(() => {
+    const form = document.getElementById('amoCrmForm')
 
+    if (!form) return
 
-  const schema = yup.object().shape({
-    fullName: yup
-      .string()
-      .min(3, 'Please enter 3 to 20 characters')
-      .max(20, 'Please enter 3 to 20 characters')
-      .required(),
-    phone: yup.string().matches(phoneRegExp, 'Phone number is not valid'),
-    email: yup.string().email('Please enter correct e-mail').required()
+    const script = document.createElement('script')
 
-  })
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors }
-  } = useForm({
-    mode: 'onChange',
-    resolver: yupResolver(schema)
-  })
-  const onSubmit = (data: IFormInputs) => {
-    setIsDisable(true)
-    reset()
-  }
+    script.innerHTML = `
+      (function (a, m, o, c, r, m) {
+        ;(a[o + c] = a[o + c] || {
+          setMeta: function (p) {
+            this.params = (this.params || []).concat([p])
+          }
+        }),
+          (a[o + r] =
+            a[o + r] ||
+            function (f) {
+              a[o + r].f = (a[o + r].f || []).concat([f])
+            }),
+          a[o + r]({ id: '857395', hash: 'dde6b0bd3dc223576838c970a1729ae9', locale: 'ru' })
+      })(window, 0, 'amo_forms_', 'params', 'load')
+    `
 
+    form.appendChild(script)
+    const iframes = document.getElementsByTagName('iframe')
+
+    setTimeout(
+      () =>
+        new Array(iframes.length).fill(0).forEach((_, index) => {
+          const iframe = iframes.item(index)
+
+          if (iframe) {
+            iframe.style.height = '500px'
+            iframe.style.position = 'relative'
+            document.body.appendChild(iframe)
+          }
+        }),
+      500
+    )
+  }, [rendersCount])
 
   return (
-    <footer className='relative pt-60'>
-      <img className='absolute h-full top-0 left-0 z-0 md:hidden' src='/images/footer.png' alt='' />
-      <Container className='relative z-10'>
-        <div className=' max-w-[43.75rem] md:mx-auto md:text-center xs:text-left'>
-          <div className='text-50 leading-60 font-semibold text-[#373773] xs:text-22 xs:leading-26'>Привлекайте
-            кандидатов<span
-              className='text-[#FF7143] xs:text-[#28D2AF]'> быстрее и легче </span>
+    <footer className="relative pt-60">
+      <img className="absolute h-[246%] top-0 left-0 z-0 md:hidden" src="/images/footer.png" alt="" />
+
+      <Container className="relative z-10">
+        <div className=" max-w-[43.75rem] md:mx-auto md:text-center xs:text-left">
+          <div className="text-50 leading-60 font-semibold text-[#373773] xs:text-22 xs:leading-26">
+            Привлекайте кандидатов<span className="text-[#FF7143] xs:text-[#28D2AF]"> быстрее и легче </span>
           </div>
-          <div
-            className='pt-21 text-39 text-purple/50 leading-40 text-[#373773] font-display xs:text-14 xs:leading-18'>
-            Обращайтесь за дополнительной информацией и запросам на
-            проведение пилотного проекта
+          <div className="pt-21 text-39 text-purple/50 leading-40 text-[#373773] font-display xs:text-14 xs:leading-18">
+            Обращайтесь за дополнительной информацией и запросам на проведение пилотного проекта
           </div>
-          <form className='mt-40 max-w-[33.125rem] md:mx-auto' onSubmit={handleSubmit(onSubmit)}>
-            <div className='relative'>
-              <TextInput
-                {...register('fullName')}
-                name='fullName'
-                placeholder='Имя'
-                variant='footer'
-              />
-              <div className='absolute text-[#d11507] text-10 pt-5'>{errors.fullName?.message}</div>
-            </div>
-            <div className='mt-30 relative'>
-              <TextInput
-                {...register('phone')}
-                name='phone'
-                placeholder='Телефон'
-                variant='footer'
-              />
-              <div className='absolute text-[#d11507] text-10 pt-5'>{errors.phone?.message}</div>
-            </div>
-
-            <div className='mt-30 relative'>
-              <TextInput {...register('email')} name='email' placeholder='Электронная почта' variant='footer' />
-              <div className='absolute text-[#d11507] text-10 pt-5'>{errors.email?.message}</div>
-            </div>
-
-            <Button
-
-              className='text-[#FFFFFF] mb-60 text-22 !py-14 mt-30 w-full rounded-22 '
-              variant='primary'
-              disabled={isDisable}
-              onClick={() => {
-              }}
-            >
-              Отправить
-            </Button>
-
-
+          <form className="mt-40 max-w-[33.125rem] md:mx-auto">
+            <div id={'amoCrmForm'} className="asbolute" />
           </form>
         </div>
       </Container>
