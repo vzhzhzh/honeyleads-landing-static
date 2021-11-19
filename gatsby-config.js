@@ -62,5 +62,5 @@ module.exports = {
     // `gatsby-plugin-offline`,
     'gatsby-plugin-postcss'
   ],
-  pathPrefix: '/honeyleads-landing-static',
+  // pathPrefix: '/honeyleads-landing-static',
 }
