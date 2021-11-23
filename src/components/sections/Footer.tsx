@@ -1,5 +1,6 @@
 import React, { memo, useEffect } from 'react'
 import { useRendersCount, useUpdate } from 'react-use'
+import { Helmet } from 'react-helmet'
 import { Container } from '~ux'
 interface IFormInputs {
   fullName: string
@@ -53,9 +54,10 @@ const FooterProps: React.FC<FooterProps> = props => {
           const iframe = iframes.item(index)
 
           if (iframe) {
-            iframe.style.height = '500px'
-            iframe.style.position = 'relative'
-            document.body.appendChild(iframe)
+            form.appendChild(iframe)
+            iframe.style.height = '368px'
+            iframe.style.width = '500px'
+            iframe.style.position = 'absolute'
           }
         }),
       500
@@ -63,20 +65,32 @@ const FooterProps: React.FC<FooterProps> = props => {
   }, [rendersCount])
 
   return (
-    <footer className="relative pt-60">
-      <img className="absolute h-[246%] top-0 left-0 z-0 md:hidden" src="/images/footer.png" alt="" />
-
-      <Container className="relative z-10">
-        <div className=" max-w-[43.75rem] md:mx-auto md:text-center xs:text-left">
-          <div className="text-50 leading-60 font-semibold text-[#373773] xs:text-22 xs:leading-26">
-            Привлекайте кандидатов<span className="text-[#FF7143] xs:text-[#28D2AF]"> быстрее и легче </span>
+    <footer className="relative h-[100vh] bg-cover bg-footer bg-no-repeat bg-center-right">
+      <Helmet>
+        <script
+          id="amoforms_script_857395"
+          async
+          src="https://forms.amocrm.ru/forms/assets/js/amoforms.js?1635958282"
+        />
+      </Helmet>
+      {/* <img
+        className="absolute w-screen right-0 min-w-[1920px] top-0 z-0 lg:min-w-[1440px] md:hidden"
+        src="/images/footer.png"
+        alt=""
+      /> */}
+      <Container className="relative mt-40 z-10">
+        <div className="text-50 leading-60 font-semibold text-[#636385] md:text-40  xs:text-22 xs:leading-26">
+          Привлекайте кандидатов
+          <br />
+          <span className="text-[#FF7143] xs:text-[#28D2AF]"> быстрее и легче </span>
+        </div>
+        <div className="max-w-[50vw] text-30 text-left text-purple/50 leading-40 text-[#373773] font-display md:max-w-[100vw] md:text-34 md:pt-5  xs:text-14 xs:leading-18">
+          Обращайтесь за дополнительной информацией и запросам на проведение пилотного проекта
+        </div>
+        <div className="mt-[20px] max-w-[43.75rem] md:mx-auto md:text-center xs:text-left">
+          <div className="absolute left-[10px] sm:left-[150px] xs:left-[0px] ">
+            <div id={'amoCrmForm'} />
           </div>
-          <div className="pt-21 text-39 text-purple/50 leading-40 text-[#373773] font-display xs:text-14 xs:leading-18">
-            Обращайтесь за дополнительной информацией и запросам на проведение пилотного проекта
-          </div>
-          <form className="mt-40 max-w-[33.125rem] md:mx-auto">
-            <div id={'amoCrmForm'} className="asbolute" />
-          </form>
         </div>
       </Container>
     </footer>

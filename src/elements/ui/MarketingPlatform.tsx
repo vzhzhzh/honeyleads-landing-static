@@ -27,7 +27,7 @@ const MarketingPlatform: FC<MarketingPlatformProps> = () => {
               <li>опытная команда маркетологов</li>
             </ul>
             <div className='min-w-fit flex items-center gap-x-25 mt-85 md:mt-50'>
-              <Button className='font-display' variant='primary' size='lg'>Привлечь кандидатов</Button>
+              <Button className='font-display' onClick={handleButtonClick} variant='primary' size='lg'>Привлечь кандидатов</Button>
               <Icon.ScrollDown onClick={handleButtonClick} className='cursor-pointer' />
 
 

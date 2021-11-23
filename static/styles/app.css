@@ -234,6 +234,7 @@
   @media (max-width: 568px) {
     iframe {
       left: 0px;
+      right: 60px;
       max-width: 100%;
     }
   }

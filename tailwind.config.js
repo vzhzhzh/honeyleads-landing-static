@@ -1,6 +1,5 @@
 const colors = require('./static/styles/colors')
 
-
 const rem = 16
 const array = max => new Array(max).fill(0).map((_, index) => index)
 
@@ -99,11 +98,12 @@ module.exports = {
       backgroundImage: theme => ({
         'sign-in-page-layout': 'url("/images/sign-in-page-layout.png")',
         'sign-up-page-layout': 'url("/images/sign-up-page-layout.png")',
-        'footer': 'url("/images/footer.png")',
-        'goodCompany': 'url("/images/goodCompany.png")',
-        'orange': 'url("/images/orange.png")',
-        'ats': 'url("/images/ats.png")',
-        'statisticYear': 'url("/images/statisticYear.png")'
+        footer: 'url("/images/footer.png")',
+        goodCompany: 'url("/images/goodCompany.png")',
+        orange: 'url("/images/orange.png")',
+        ats: 'url("/images/ats.png")',
+        statisticYear: 'url("/images/statisticYear.png")',
+        footer: 'url("/images/footer.png")'
       }),
       gridTemplateColumns: {
         '7x32': 'repeat(7, 32px)'
