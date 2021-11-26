@@ -21,13 +21,13 @@ const MarketingPlatform: FC<MarketingPlatformProps> = () => {
             кандидатов <div
               className='inline text-[#FF7143]'>на любые вакансии</div></h1>
           <div className='block md:hidden'>
-            <ul className='list-disc font-display text-[#373773] text-23 leading-35 pl-30 mt-55 md:mt-30'>
+            <ul className='list-disc font-normal text-[#373773] text-23 leading-35 pl-30 mt-55 md:mt-30'>
               <li>запуск новой вакансии или города за 1 день</li>
               <li>любые проблемные вакансии/города</li>
               <li>опытная команда маркетологов</li>
             </ul>
             <div className='min-w-fit flex items-center gap-x-25 mt-85 md:mt-50'>
-              <Button className='font-display' onClick={handleButtonClick} variant='primary' size='lg'>Привлечь кандидатов</Button>
+              <Button className='font-semibold' onClick={handleButtonClick} variant='primary' size='lg'>Привлечь кандидатов</Button>
               <Icon.ScrollDown onClick={handleButtonClick} className='cursor-pointer' />
 
 

@@ -35,13 +35,13 @@ const Header: React.FC<HeaderProps> = props => {
             {/*    </div>*/}
             {/*  ))}*/}
             {/*</div>*/}
-            <div>
+            <div className={"hidden"}>
               <a
                 className='font-display text-23 text-purple/50 border border-black-2/10 rounded-full py-15 px-33 sm:hidden'
                 href='tel:+74954445566'>8(495)
                 444 55 66</a>
             </div>
-            <a className='hidden sm:block' href='tel:+74954445566'><Icon.Phone /></a>
+            <a className='hidden' href='tel:+74954445566'><Icon.Phone /></a>
           </div>
         </nav>
       </Container>

@@ -84,7 +84,7 @@ const FooterProps: React.FC<FooterProps> = props => {
           <br />
           <span className="text-[#FF7143] xs:text-[#28D2AF]"> быстрее и легче </span>
         </div>
-        <div className="max-w-[50vw] text-30 text-left text-purple/50 leading-40 text-[#373773] font-display md:max-w-[100vw] md:text-34 md:pt-5  xs:text-14 xs:leading-18">
+        <div className="max-w-[50vw] text-30 text-left text-purple/50 leading-40 text-[##373773] font-normal md:max-w-[100vw] md:text-34 md:pt-5  xs:text-14 xs:leading-18">
           Обращайтесь за дополнительной информацией и запросам на проведение пилотного проекта
         </div>
         <div className="mt-[20px] max-w-[43.75rem] md:mx-auto md:text-center xs:text-left">
