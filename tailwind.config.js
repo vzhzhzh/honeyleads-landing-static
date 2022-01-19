@@ -47,7 +47,7 @@ module.exports = {
     }),
     fontFamily: {
       sans: ['Montserrat', 'sans-serif'],
-      display: 'SB Sans Display'
+      display: ['"SbSansDisplay"']
     },
     fontSize: {
       ...fontSize,
@@ -98,7 +98,6 @@ module.exports = {
       backgroundImage: theme => ({
         'sign-in-page-layout': 'url("/images/sign-in-page-layout.png")',
         'sign-up-page-layout': 'url("/images/sign-up-page-layout.png")',
-        footer: 'url("/images/footer.png")',
         goodCompany: 'url("/images/goodCompany.png")',
         orange: 'url("/images/orange.png")',
         ats: 'url("/images/ats.png")',
@@ -174,7 +173,7 @@ module.exports = {
       borderStyle: ['hover'],
       margin: ['hover', 'active', 'focus', 'last'],
       backgroundColor: ['hover', 'active', 'focus', 'disabled', 'checked'],
-      backgroundImage: ['hover', 'active', 'focus', 'disabled', 'checked'],
+      backgroundImage: ['hover', 'active', 'focus', 'disabled', 'checked', 'sm'],
       translate: ['hover'],
       pointerEvents: ['disabled']
     }

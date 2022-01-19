@@ -1,12 +1,36 @@
-import React, { memo, useEffect } from 'react'
+import axios from 'axios'
+import React, { memo, useEffect, useState } from 'react'
 import { useRendersCount, useUpdate } from 'react-use'
 import { Helmet } from 'react-helmet'
+import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+
+import { Button, TextInput } from '~ui'
 import { Container } from '~ux'
+
 interface IFormInputs {
-  fullName: string
-  phone: number
+  name: string
+  phone: string
   email: string
 }
+
+interface IFormData {
+  name: string
+  message: string
+  email: string
+}
+
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
+const requiredMessage = 'Поле обязательно для заполнения'
+
+const schema = yup.object().shape({
+  name: yup.string().required(requiredMessage),
+  phone: yup.string().matches(phoneRegExp, 'Введите корректный номер телефона').required(requiredMessage),
+  email: yup.string().email('Введите корректный e-mail').required(requiredMessage)
+})
 
 interface FooterProps {}
 
@@ -22,50 +46,27 @@ const FooterProps: React.FC<FooterProps> = props => {
     }
   }, [rendersCount])
 
-  useEffect(() => {
-    const form = document.getElementById('amoCrmForm')
+  const [isDisable, setIsDisable] = useState<boolean>(false)
 
-    if (!form) return
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    mode: 'onChange',
+    resolver: yupResolver(schema)
+  })
+  const onSubmit = ({ name, phone, email }: IFormInputs) => {
+    setIsDisable(true)
+    sendForm({ name, email, message: phone })
+  }
 
-    const script = document.createElement('script')
-
-    script.innerHTML = `
-      (function (a, m, o, c, r, m) {
-        ;(a[o + c] = a[o + c] || {
-          setMeta: function (p) {
-            this.params = (this.params || []).concat([p])
-          }
-        }),
-          (a[o + r] =
-            a[o + r] ||
-            function (f) {
-              a[o + r].f = (a[o + r].f || []).concat([f])
-            }),
-          a[o + r]({ id: '857395', hash: 'dde6b0bd3dc223576838c970a1729ae9', locale: 'ru' })
-      })(window, 0, 'amo_forms_', 'params', 'load')
-    `
-
-    form.appendChild(script)
-    const iframes = document.getElementsByTagName('iframe')
-
-    setTimeout(
-      () =>
-        new Array(iframes.length).fill(0).forEach((_, index) => {
-          const iframe = iframes.item(index)
-
-          if (iframe) {
-            form.appendChild(iframe)
-            iframe.style.height = '368px'
-            iframe.style.width = '500px'
-            iframe.style.position = 'absolute'
-          }
-        }),
-      500
-    )
-  }, [rendersCount])
+  const sendForm = (data: IFormData) => {
+    return axios.post(`https://backend.honeyleads.ru/api/landing-requests`, data)
+  }
 
   return (
-    <footer className="relative h-[100vh] bg-cover bg-footer bg-no-repeat bg-center-right">
+    <footer className="md:bg-none bg-footer relative bg-right-bottom bg-no-repeat">
       <Helmet>
         <script
           id="amoforms_script_857395"
@@ -84,14 +85,45 @@ const FooterProps: React.FC<FooterProps> = props => {
           <br />
           <span className="text-[#FF7143] xs:text-[#28D2AF]"> быстрее и легче </span>
         </div>
-        <div className="max-w-[50vw] text-30 text-left text-purple/50 leading-40 text-[##373773] font-normal md:max-w-[100vw] md:text-34 md:pt-5  xs:text-14 xs:leading-18">
+        <div className="max-w-[50vw] text-30 md:text-24 text-left text-purple/50 leading-40 text-[##373773] font-normal md:max-w-[100vw] md:pt-5 xs:text-14 xs:leading-18">
           Обращайтесь за дополнительной информацией и запросам на проведение пилотного проекта
         </div>
-        <div className="mt-[20px] max-w-[43.75rem] md:mx-auto md:text-center xs:text-left">
-          <div className="absolute left-[10px] sm:left-[150px] xs:left-[0px] ">
-            <div id={'amoCrmForm'} />
+        <form className="mt-40 max-w-[33.125rem] md:mx-auto" onSubmit={handleSubmit(onSubmit)}>
+          <div className="relative">
+            <TextInput {...register('name')} name="name" placeholder="Имя" variant="footer" disabled={isDisable} />
+            <div className="absolute text-[#d11507] text-10 pt-5">{errors.name?.message}</div>
           </div>
-        </div>
+          <div className="mt-30 relative">
+            <TextInput
+              {...register('phone')}
+              name="phone"
+              placeholder="Телефон"
+              variant="footer"
+              disabled={isDisable}
+            />
+            <div className="absolute text-[#d11507] text-10 pt-5">{errors.phone?.message}</div>
+          </div>
+
+          <div className="mt-30 relative">
+            <TextInput
+              {...register('email')}
+              name="email"
+              placeholder="Электронная почта"
+              variant="footer"
+              disabled={isDisable}
+            />
+            <div className="absolute text-[#d11507] text-10 pt-5">{errors.email?.message}</div>
+          </div>
+
+          <Button
+            className="text-[#FFFFFF] mb-60 text-22 !py-14 mt-30 w-full rounded-22 font-semibold disabled:opacity-75"
+            variant="primary"
+            disabled={isDisable}
+            onClick={() => {}}
+          >
+            Отправить
+          </Button>
+        </form>
       </Container>
     </footer>
   )

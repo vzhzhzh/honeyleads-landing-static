@@ -5,7 +5,10 @@ import { Menu, Transition } from '@headlessui/react'
 interface BurgerMenuProps {
   children: Children
   className?: ClassName
-  options: string[]
+  options: {
+    label: string
+    url: string
+  }[]
 }
 
 const BurgerMenu: FC<BurgerMenuProps> = props => {
@@ -28,8 +31,8 @@ const BurgerMenu: FC<BurgerMenuProps> = props => {
           leaveTo="transform opacity-0 scale-90"
         >
           <Menu.Items className="absolute left-0 w-fit mt-1 p-10 rounded-8 bg-neutral-13 border border-neutral-9 shadow-drop text-white">
-            {options.map((text, index) => (
-              <div key={index} className="px-1 py-1 ">
+            {options.map(({ label, url }) => (
+              <div key={url} className="px-1 py-1 ">
                 <Menu.Item>
                   {({ active }) => (
                     <div
@@ -38,7 +41,7 @@ const BurgerMenu: FC<BurgerMenuProps> = props => {
                         'text-white-#FFFFFF hover:bg-neutral-7 focus:bg-neutral-7 transition-transform transform hover:-translate-y-2 focus:-translate-y-2 whitespace-nowrap'
                       }
                     >
-                      {text}
+                      {label}
                     </div>
                   )}
                 </Menu.Item>

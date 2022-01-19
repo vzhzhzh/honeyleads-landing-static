@@ -1,6 +1,6 @@
-import React, {forwardRef, memo} from 'react'
+import React, { forwardRef, memo } from 'react'
 import cls from 'classnames'
-import {Children, ClassName} from '~types'
+import { Children, ClassName } from '~types'
 
 export type TextInputVariantType = 'primary' | 'light' | 'footer'
 
@@ -11,9 +11,7 @@ const textInputPrimaryVariant =
 const textInputLightVariant =
   'text-neutral-14 bg-neutral-1 ring ring-neutral-2 ring-offset-neutral-1 hover:ring-neutral-4 placeholder-neutral-4 disabled:bg-neutral-11 disabled:ring-neutral-4 disabled:pointer-events-none disabled:text-neutral-8 disabled:ring-neutral-2'
 
-const textInputFooterVariant =
-  'bg-[#F6F6F6] border border-[#191919] border-0 rounded-22 py-23 px-32 '
-
+const textInputFooterVariant = 'bg-[#F6F6F6] border border-[#191919] border-0 rounded-22 py-23 px-32 '
 
 const getTextInputVariantClass = (variant: TextInputVariantType, error: boolean, className?: ClassName) => {
   const isPrimary = !variant || variant === 'primary'
@@ -31,13 +29,14 @@ const getTextInputVariantClass = (variant: TextInputVariantType, error: boolean,
 
     [`${textInputFooterVariant}`]: isFooter,
     'focus-footer-violet-ring': isFooter && !error,
-    'error-footer-ring': isFooter && error,
-
+    'error-footer-ring': isFooter && error
   })
 }
 
-export type HtmlInputProps = Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-  'className' | 'ref' | 'prefix'>
+export type HtmlInputProps = Omit<
+  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+  'className' | 'ref' | 'prefix'
+>
 
 export interface TextInputProps extends HtmlInputProps {
   className?: ClassName
@@ -50,7 +49,7 @@ export interface TextInputProps extends HtmlInputProps {
 }
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
-  const {className, variant = 'primary', error, prefix, suffixes, ...rest} = props
+  const { className, variant = 'primary', error, prefix, suffixes, ...rest } = props
 
   return (
     <label className={getTextInputVariantClass(variant, !!error, className)}>
@@ -58,27 +57,23 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
       <input
         ref={ref}
         id={rest.name}
-
-        className={cls('flex-1', {
+        className={cls('flex-1 text-20 xs:text-14', {
           'bg-neutral-11': !variant || variant === 'primary',
           'bg-neutral-1': variant === 'light',
-          'bg-[#F7F7F7]': variant === 'footer',
-
+          'bg-[#F7F7F7]': variant === 'footer'
         })}
-
-
         aria-errormessage={error}
         aria-invalid={!!error}
         data-variant={variant}
         {...rest}
       />
       {suffixes &&
-      suffixes.length > 0 &&
-      suffixes.map((suffix, index) => (
-        <div key={index} className="ml-8 flex items-center text-neutral-5">
-          {suffix}
-        </div>
-      ))}
+        suffixes.length > 0 &&
+        suffixes.map((suffix, index) => (
+          <div key={index} className="ml-8 flex items-center text-neutral-5">
+            {suffix}
+          </div>
+        ))}
     </label>
   )
 })
