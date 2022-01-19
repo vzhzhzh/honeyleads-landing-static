@@ -1,2 +1,0 @@
-(self.webpackChunkbrightlab_gatsby_boilerplate=self.webpackChunkbrightlab_gatsby_boilerplate||[]).push([[195],{6195:function(e,a,t){"use strict";t.r(a);var l=t(7294),r=function(e){var a=e.children;return l.createElement("main",{className:"flex-1"},l.createElement("div",{className:""},a))};a.default=(0,l.memo)(r)}}]);
-//# sourceMappingURL=195-5fdfa09b3e74c43679e5.js.map

@@ -7,14 +7,14 @@
   }
 
   @font-face {
-    font-family: 'SbSansDisplay';
-    src: url('../fonts/SBSansDisplay-Regular.otf') format('otf');
+    font-family: "SbSansDisplay";
+    src: url('../fonts/SBSansDisplay-Regular.otf') format("opentype");
     font-weight: 400;
     font-display: swap;
   }
   @font-face {
-    font-family: 'SbSansDisplay';
-    src: url('../fonts/SBSansDisplay-SemiBold.otf') format('otf');
+    font-family: "SbSansDisplay";
+    src: url('../fonts/SBSansDisplay-SemiBold.otf') format("opentype");
     font-weight: 600;
     font-display: swap;
   }

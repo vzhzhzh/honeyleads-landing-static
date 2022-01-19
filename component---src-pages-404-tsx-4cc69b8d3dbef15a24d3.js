@@ -1,2 +1,0 @@
-(self.webpackChunkbrightlab_gatsby_boilerplate=self.webpackChunkbrightlab_gatsby_boilerplate||[]).push([[218],{938:function(e,t,l){"use strict";l.r(t);var n=l(7294),a=function(){return n.createElement("section",null,n.createElement("h1",null,"404: Not Found"),n.createElement("p",null,"You just hit a route that doesn't exist... the sadness."))};t.default=(0,n.memo)(a)}}]);
-//# sourceMappingURL=component---src-pages-404-tsx-4cc69b8d3dbef15a24d3.js.map
