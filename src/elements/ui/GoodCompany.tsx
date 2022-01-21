@@ -11,17 +11,17 @@ interface ICards {
 
 const cards: ICards[] = [
   {
-    img: '/images/goodCompanyItem_1.jpg',
+    img: '/images/goodCompanyItem_1.png',
     title: 'Ритейл',
     description: 'Продавец-кассир, старший кассир, кладовщик и т.д.'
   },
   {
-    img: '/images/goodCompanyItem_3.jpg',
+    img: '/images/goodCompanyItem_3.png',
     title: 'Банки',
     description: 'Специалист контактного центра, клиентский менеджер, менеджер прямых продаж'
   },
   {
-    img: '/images/goodCompanyItem_2.jpg',
+    img: '/images/goodCompanyItem_2.png',
     title: 'Производство',
     description: 'Оператор производственной линии, оператор линии сборки'
   }
@@ -34,7 +34,7 @@ const GoodCompany: FC<GoodCompanyProps> = () => {
         <Container>
           <div className="py-100 xs:py-35">
             <div className="text-50 text-white font-semibold xs:text-22 xs:leading-27">Вы в хорошей компании</div>
-            <div className="flex flex-nowrap gap-x-50 mt-75 md:overflow-x-scroll md:pb-30 xs:gap-x-20 xs:mt-35">
+            <div className="flex flex-nowrap gap-x-64 mt-75 md:overflow-x-scroll md:pb-30 xs:gap-x-20 xs:mt-35">
               {cards.map(({ title, description, img }, index) => (
                 <div
                   key={index}
