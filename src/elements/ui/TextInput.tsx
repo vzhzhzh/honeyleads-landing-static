@@ -57,7 +57,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
       <input
         ref={ref}
         id={rest.name}
-        className={cls('flex-1 text-20 xs:text-14', {
+        className={cls('flex-1 text-18 xs:text-14', {
           'bg-neutral-11': !variant || variant === 'primary',
           'bg-neutral-1': variant === 'light',
           'bg-[#F7F7F7]': variant === 'footer'

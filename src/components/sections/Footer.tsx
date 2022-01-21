@@ -6,29 +6,19 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { Button, TextInput } from '~ui'
+import { Button, TextArea, TextInput } from '~ui'
 import { Container } from '~ux'
 
 interface IFormInputs {
   name: string
-  phone: string
+  message?: string
   email: string
 }
-
-interface IFormData {
-  name: string
-  message: string
-  email: string
-}
-
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
 const requiredMessage = 'Поле обязательно для заполнения'
 
 const schema = yup.object().shape({
   name: yup.string().required(requiredMessage),
-  phone: yup.string().matches(phoneRegExp, 'Введите корректный номер телефона').required(requiredMessage),
   email: yup.string().email('Введите корректный e-mail').required(requiredMessage)
 })
 
@@ -56,12 +46,12 @@ const FooterProps: React.FC<FooterProps> = props => {
     mode: 'onChange',
     resolver: yupResolver(schema)
   })
-  const onSubmit = ({ name, phone, email }: IFormInputs) => {
+  const onSubmit = (data: IFormInputs) => {
     setIsDisable(true)
-    sendForm({ name, email, message: phone })
+    sendForm(data)
   }
 
-  const sendForm = (data: IFormData) => {
+  const sendForm = (data: IFormInputs) => {
     return axios.post(`https://backend.honeyleads.ru/api/landing-requests`, data)
   }
 
@@ -93,16 +83,6 @@ const FooterProps: React.FC<FooterProps> = props => {
             <TextInput {...register('name')} name="name" placeholder="Имя" variant="footer" disabled={isDisable} />
             <div className="absolute text-[#d11507] text-10 pt-5">{errors.name?.message}</div>
           </div>
-          <div className="mt-30 relative">
-            <TextInput
-              {...register('phone')}
-              name="phone"
-              placeholder="Телефон"
-              variant="footer"
-              disabled={isDisable}
-            />
-            <div className="absolute text-[#d11507] text-10 pt-5">{errors.phone?.message}</div>
-          </div>
 
           <div className="mt-30 relative">
             <TextInput
@@ -114,6 +94,18 @@ const FooterProps: React.FC<FooterProps> = props => {
             />
             <div className="absolute text-[#d11507] text-10 pt-5">{errors.email?.message}</div>
           </div>
+
+          <div className="mt-30 relative">
+            <TextArea
+              {...register('message')}
+              variant="footer"
+              name="phone"
+              placeholder="Сообщение"
+              disabled={isDisable}
+            />
+          </div>
+
+          {isDisable && <h4 className="text-20 text-center mt-30">Ваш отклик успешно загружен</h4>}
 
           <Button
             className="text-[#FFFFFF] mb-60 text-22 !py-14 mt-30 w-full rounded-22 font-semibold disabled:opacity-75"

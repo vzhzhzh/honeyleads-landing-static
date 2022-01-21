@@ -2,7 +2,7 @@ import React, { forwardRef, memo } from 'react'
 import cls from 'classnames'
 import { ClassName } from '~types'
 
-export type TextAreaVariantType = 'primary' | 'light'
+export type TextAreaVariantType = 'primary' | 'light' | 'footer'
 
 const textAreaBaseVariant =
   'w-full inline-flex items-center px-14 py-8 rounded-6 text-14 cursor-pointer transition-colors transition-shadow'
@@ -11,9 +11,12 @@ const textAreaPrimaryVariant =
 const textAreaLightVariant =
   'text-neutral-14 bg-neutral-1 ring ring-neutral-2 ring-offset-neutral-1 hover:ring-neutral-4 placeholder-neutral-4 disabled:bg-neutral-11 disabled:ring-neutral-4 disabled:pointer-events-none disabled:text-neutral-8 disabled:ring-neutral-2'
 
+const textAreaFooterVariant = 'bg-[#F6F6F6] border border-[#191919] border-0 rounded-22 py-23 px-32 '
+
 const getTextAreaVariantClass = (variant: TextAreaVariantType, error: boolean, className?: ClassName) => {
   const isPrimary = !variant || variant === 'primary'
   const isLight = variant === 'light'
+  const isFooter = variant === 'footer'
 
   return cls(className, textAreaBaseVariant, {
     [`${textAreaPrimaryVariant}`]: isPrimary,
@@ -22,7 +25,11 @@ const getTextAreaVariantClass = (variant: TextAreaVariantType, error: boolean, c
 
     [`${textAreaLightVariant}`]: isLight,
     'focus-light-violet-ring': isLight && !error,
-    'error-light-ring': isLight && error
+    'error-light-ring': isLight && error,
+
+    [`${textAreaFooterVariant}`]: isFooter,
+    'focus-footer-violet-ring': isFooter && !error,
+    'error-footer-ring': isFooter && error
   })
 }
 
@@ -46,9 +53,10 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => 
       <textarea
         ref={ref}
         id={rest.name}
-        className={cls('flex-1', {
+        className={cls('flex-1 text-18 xs:text-14', {
           'bg-neutral-11': !variant || variant === 'primary',
-          'bg-neutral-1': variant === 'light'
+          'bg-neutral-1': variant === 'light',
+          'bg-[#F7F7F7]': variant === 'footer'
         })}
         aria-errormessage={error}
         aria-invalid={!!error}

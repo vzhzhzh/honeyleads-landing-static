@@ -42,7 +42,7 @@ const GoodCompany: FC<GoodCompanyProps> = () => {
                 >
                   <img src={img} alt="" />
                   <div className="px-50 mt-60 xs:px-30 xs:pb-30 xs:mt-30">
-                    <h4 className="lg:text-25 xl:text-35 md:text-35 leading-42 text-purple font-bold xs:text-18 xs:leading-22  break-words">
+                    <h4 className="text-35 lg:text-25 xl:text-35 md:text-35 leading-42 text-purple font-bold xs:text-18 xs:leading-22  break-words">
                       {title}
                     </h4>
                     <div className="text-20 text-purple/40 leading-32 mt-20 xs:text-12 xs:leading-16">
