@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = props => {
   const {} = props
 
   return (
-    <header className="text-20 leading-25 pt-40 sm:pt-16 bg-[#F9F9F8]">
+    <header className="text-20 leading-25 bg-[#F9F9F8]">
       <Container>
         <nav className="" aria-label="Top">
           <div className="flex items-center justify-between">

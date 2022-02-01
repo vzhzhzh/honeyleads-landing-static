@@ -11,7 +11,7 @@ const MarketingPlatform: FC<MarketingPlatformProps> = () => {
   }
   return (
     <Container>
-      <div className="grid grid-cols-2 pt-150 md:pt-80 xs:pt-16 sm:pt-40 md:block">
+      <div className="grid grid-cols-2 pt-60 md:pt-40 xs:pt-16 sm:pt-40 md:block">
         <div className="s">
           <div className="text-34 leading-41 text-purple/60 font-medium xs:text-14 xs:leading-17">
             HR маркетинг платформа
@@ -20,7 +20,7 @@ const MarketingPlatform: FC<MarketingPlatformProps> = () => {
             Поток кандидатов <div className="inline text-[#FF7143]">на любые вакансии</div>
           </h1>
           <div className="block md:hidden">
-            <ul className="list-disc font-normal text-[#373773] text-23 leading-35 pl-30 mt-55 md:mt-30">
+            <ul className="list-disc font-normal text-[#373773] text-23 leading-35 pl-30 mt-40 md:mt-30">
               <li>запуск новой вакансии или города за 1 день</li>
               <li>любые проблемные вакансии/города</li>
               <li>опытная команда маркетологов</li>

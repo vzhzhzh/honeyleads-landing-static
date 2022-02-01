@@ -99,7 +99,7 @@ const FooterProps: React.FC<FooterProps> = props => {
             <TextArea
               {...register('message')}
               variant="footer"
-              name="phone"
+              name="message"
               placeholder="Сообщение"
               disabled={isDisable}
             />
