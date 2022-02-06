@@ -38,7 +38,6 @@ exports.onCreateWebpackConfig = function ({ stage, loaders, actions, plugins }) 
       alias: {
         '~hooks': path.resolve(__dirname, 'src/hooks/EXPORT.ts'),
 
-
         '~layouts': path.resolve(__dirname, 'src/components/layouts/EXPORT.ts'),
         '~sections': path.resolve(__dirname, 'src/components/sections/EXPORT.ts'),
 
@@ -50,7 +49,8 @@ exports.onCreateWebpackConfig = function ({ stage, loaders, actions, plugins }) 
         '~styles': path.resolve(__dirname, 'static/styles'),
 
         '~types': path.resolve(__dirname, 'src/types/EXPORT.ts'),
-        '~utils': path.resolve(__dirname, 'src/utils/EXPORT.ts')
+        '~utils': path.resolve(__dirname, 'src/utils/EXPORT.ts'),
+        '~consts': path.resolve(__dirname, 'src/consts/EXPORT.ts')
       }
     }
   }

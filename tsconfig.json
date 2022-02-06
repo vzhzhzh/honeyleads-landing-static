@@ -17,6 +17,7 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
+      "~consts": ["src/consts/EXPORT.ts"],
       "~hooks": ["src/hooks/EXPORT.ts"],
       "~hocs": ["src/hocs/EXPORT.ts"],
 

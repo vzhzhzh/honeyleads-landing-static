@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
+import { FORM_ID } from '~consts'
 import { Button, TextArea, TextInput } from '~ui'
 import { Container } from '~ux'
 
@@ -78,7 +79,7 @@ const FooterProps: React.FC<FooterProps> = props => {
         <div className="max-w-[50vw] text-30 md:text-24 text-left text-purple/50 leading-40 text-[##373773] font-normal md:max-w-[100vw] md:pt-5 xs:text-14 xs:leading-18">
           Обращайтесь за дополнительной информацией и запросам на проведение пилотного проекта
         </div>
-        <form className="mt-40 max-w-[33.125rem] md:mx-auto" onSubmit={handleSubmit(onSubmit)}>
+        <form className="mt-40 max-w-[33.125rem] md:mx-auto" onSubmit={handleSubmit(onSubmit)} id={FORM_ID}>
           <div className="relative">
             <TextInput {...register('name')} name="name" placeholder="Имя" variant="footer" disabled={isDisable} />
             <div className="absolute text-[#d11507] text-10 pt-5">{errors.name?.message}</div>

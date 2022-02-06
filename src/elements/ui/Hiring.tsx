@@ -1,5 +1,7 @@
 import React, { FC, memo } from 'react'
 import { Container } from '~ux'
+import { FORM_ID } from '~consts'
+import ScrollButton from './ScrollButton'
 
 interface HiringProps {}
 
@@ -10,9 +12,9 @@ const Hiring: FC<HiringProps> = () => {
         <Container>
           <div className="flex justify-between py-100 xs:py-80 md:block">
             <div>
-              <div className="font-semibold sm:min-w-full xs:text-20 xs:leading-24 xs:px-40 h-fit inline-flex items-center justify-center border cursor-pointer transition-colors select-none py-14 px-50 text-white bg-[#FF7143] rounded-full text-20 font border-transparent hover:bg-[#C55B39] active:bg-[#FF9472]">
+              <ScrollButton className="font-semibold" variant="primary" size="lg" scrollTo={FORM_ID}>
                 Технология - Супер Гео таргетинг
-              </div>
+              </ScrollButton>
               <div className="text-50 text-[#373773] max-w-[51.875rem] pt-35 font-semibold leading-61 xs:text-22 xs:leading-27">
                 Повысьте скорость найма
                 <span className="text-[#FF7143]"> в маленьких городах/поселках</span>

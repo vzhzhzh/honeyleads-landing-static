@@ -1,5 +1,6 @@
 import React, { FC, memo } from 'react'
-import { Button } from '~ui'
+import { FORM_ID } from '~consts'
+import { ScrollButton } from '~ui'
 import { Container } from '~ux'
 
 interface TargetProps {}
@@ -20,9 +21,13 @@ const Target: FC<TargetProps> = () => {
               </div>
 
               <div className="pt-20 mb-70 md:pt-0 md:pb-50 md:flex md:justify-center">
-                <Button className="px-70 py-20 text-30 font-semibold xs:text-20 xs:leading-26 xs:py-17" variant="white">
+                <ScrollButton
+                  className="px-70 py-20 text-30 font-semibold xs:text-20 xs:leading-26 xs:py-17"
+                  variant="white"
+                  scrollTo={FORM_ID}
+                >
                   Попробовать!
-                </Button>
+                </ScrollButton>
               </div>
             </div>
             <img

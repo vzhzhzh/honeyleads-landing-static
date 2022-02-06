@@ -1,5 +1,6 @@
 import React, { FC, memo } from 'react'
-import { Button } from '~ui'
+import { FORM_ID } from '~consts'
+import { ScrollButton } from '~ui'
 import { Container } from '~ux'
 import * as Icon from '~svg'
 
@@ -26,9 +27,15 @@ const MarketingPlatform: FC<MarketingPlatformProps> = () => {
               <li>опытная команда маркетологов</li>
             </ul>
             <div className="min-w-fit flex items-center gap-x-25 mt-85 md:mt-50">
-              <Button className="font-semibold" onClick={handleButtonClick} variant="primary" size="lg">
+              <ScrollButton
+                className="font-semibold"
+                onClick={handleButtonClick}
+                variant="primary"
+                size="lg"
+                scrollTo={FORM_ID}
+              >
                 Привлечь кандидатов
-              </Button>
+              </ScrollButton>
               <Icon.ScrollDown onClick={handleButtonClick} className="cursor-pointer" />
             </div>
           </div>
@@ -41,13 +48,14 @@ const MarketingPlatform: FC<MarketingPlatformProps> = () => {
             <li>опытная команда маркетологов</li>
           </ul>
           <div className="min-w-fit flex gap-x-25 mt-85 md:mt-50 xs:mt-16">
-            <Button
+            <ScrollButton
               className="font-semibold sm:min-w-full xs:text-20 xs:leading-24 xs:px-40"
               variant="primary"
               size="lg"
+              scrollTo={FORM_ID}
             >
               Привлечь кандидатов
-            </Button>
+            </ScrollButton>
           </div>
         </div>
       </div>
