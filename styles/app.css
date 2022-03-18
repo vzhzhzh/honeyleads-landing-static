@@ -24,31 +24,31 @@
   }
 
   @media (min-width: 1440px) {
-    html {
+    body {
       font-size: calc(16 * 100vw / 1440);
     }
   }
 
   @media (min-width: 1680px) {
-    html {
+    body {
       font-size: calc(15 * 100vw / 1440);
     }
   }
 
   @media (min-width: 1920px) {
-    html {
+    body {
       font-size: calc(14 * 100vw / 1440);
     }
   }
 
   @media (min-width: 2560px) {
-    html {
+    body {
       font-size: calc(13 * 100vw / 1440);
     }
   }
 
   @media (min-width: 3840px) {
-    html {
+    body {
       font-size: calc(12 * 100vw / 1440);
     }
   }

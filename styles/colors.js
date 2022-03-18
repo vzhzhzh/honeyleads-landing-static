@@ -3,7 +3,7 @@ module.exports = {
   transparent: 'transparent',
   white: '#FFFFFF',
   black: {
-    1: '#000000',
+    1: '#262732',
     2: '#373737'
   },
   purple: '#373773',
@@ -24,7 +24,7 @@ module.exports = {
     12: '#262A37',
     13: '#272B36',
     14: '#1C1E28',
-    15: '#181A24',
+    15: '#181A24'
   },
   primary: {
     1: '#FFCADD',
